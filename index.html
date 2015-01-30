@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CS 267 - Andreas Longva by Andlon</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>CS 267 - Andreas Longva</h1>
+        <p>UC Berkeley CS 267 Spring 2015 - assignments and more</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/Andlon/cs267" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Andlon/cs267/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Andlon/cs267/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="short-biography-andreas-longva" class="anchor" href="#short-biography-andreas-longva" aria-hidden="true"><span class="octicon octicon-link"></span></a>Short biography: Andreas Longva</h1>
+
+<p>I am an international student from the Norwegian University of Science and Technology (NTNU). I came to Berkeley this fall, and I will stay here until the end of this spring semester, at which point I will go back to Norway to start work on my Master's thesis in industrial mathematics. </p>
+
+<p>Due to the way my study program is organized, I will not engage in research activities before thesis work, and so I do not have any formal research areas. Some of my academic interests revolve around using numerical methods, such as discretizations of PDEs or optimization, along with elements from computer science, to solve interesting real-world problems. Moreover, I am passionate about software, and I've spent a great deal of time on personal projects in a broad range of software categories, and I've had the chance to work on interesting software projects during summer internships, such as control systems for offshore supply vessels and training simulators for offshore operations.</p>
+
+<p>I would be especially interested in working on the parallelization of solvers for physical/mechanical systems, perhaps particularly related to fluid dynamics, linear algebra problems or graph algorithms with interesting applications, though I do not have particular examples from my own study to motivate this.</p>
+
+<p>So far, my experience with parallel programming is mainly limited to the use of threads and synchronization primitives to run separate tasks on a single computer at the same time to minimize waiting time (i.e. run processes in the background to keep a graphical user interface responsive and fluid), with not so much focus on performance. With this course, I am hoping to learn about useful abstractions and techniques that would let me design algorithms for performance-dependent projects that run efficiently on parallel platforms, both for small-scale personal computers and large-scale scientific computing.</p>
+
+<h1>
+<a id="assignment-0" class="anchor" href="#assignment-0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assignment #0</h1>
+
+<h2>
+<a id="boinc" class="anchor" href="#boinc" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>BOINC</strong>
+</h2>
+
+<p><strong>B</strong>erkeley <strong>O</strong>pen <strong>I</strong>nfrastructure for <strong>N</strong>etwork <strong>C</strong>omputing, or just <strong>BOINC</strong>, is a grid computing platform where volunteers contribute computer power to solve (mainly scientific) large scale problems. <em>BOINC</em> has been developed by the same team that developed <em>SETI@home</em>, a distributed project for volunteers to contribute to the search for extraterrestrial intelligence. The <em>SETI@home</em> client was initially designed exclusively for contribution to the <em>SETI@home</em> project. With the development of <em>BOINC</em>, which serves as an abstraction for running projects such as <em>SETI@home</em>, <em>SETI@home</em> was moved to <em>BOINC</em>, and today a large number of distributed volunteer projects are based on the <em>BOINC</em> platform.</p>
+
+<p><em>BOINC</em>, like other grid computing platforms, distributes entirely independent tasks to different clients. Hence, <em>BOINC</em> is only well-suited for embarrassingly parallel problems. Notably, the system involves a certain amount of redundancy in that multiple clients receive the same workload, after which the results are compared in order to combat clients that deliberately submit wrong results.</p>
+
+<p>Since <em>BOINC</em> is essentially middleware, it can be used for scientific problems in virtually any field. The nature and implementation of the application running on <em>BOINC</em> determines the full extent of the parallel platforms involved. In addition to the overall grid computing pattern, applications may use a single processor on a user's computer, multiple processors or even the GPU. Hence you could consider certain <em>BOINC</em> applications to be hybrid applications. For instance, the <em>Asteroids@home</em> project that runs on <em>BOINC</em> is capable of running workload units on <em>NVIDIA</em> GPUs. The overall application can thus be viewed as a hybrid of distributed and vector parallel computation.</p>
+
+<p>Depending on the nature of the individual projects running on <em>BOINC</em>, simulation results may be routinely compared with experimental results. This is the case with the <em>ATLAS@home</em> project, which uses the BOINC infrastructure to run simulations of the ATLAS particle physics experiment at CERN. </p>
+
+<p>The <em>BOINC</em> infrastructure consists of servers and clients, and is further subdivided into different separate processes. The main development language behind most of the technology is C++, and the full stack encompasses a number of technologies, including network, database management, desktop and web interfaces.</p>
+
+<p>The total floating point computing power of <em>BOINC</em> projects is estimated at about 9.9 petaFLOPS on average (January 16, 2015). Although not directly comparable, this is of the same order of magnitude as the fastest supercomputers in the world. To illustrate: According to <em>Top500</em>, the current best-performing supercomputer on the <em>LINPACK</em> benchmark has a performance of about 33.9 petaFLOPS.</p>
+
+<p>The project lists a number of upcoming projects which aim to improve weaknesses of the current infrastructure. Most notably, the current job scheduler on the client-side uses some O(n^2) algorithms that can cause unnecessarily high CPU usage when facing high quantities of small jobs. Furthermore, the GPU support is currently limited to a certain heterogeneity of devices when dealing with systems that have multiple GPUs. This implies that <em>BOINC</em> is not able to fully utilize the GPUs available in certain systems that have many different types of GPUs.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Andlon">Andlon</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
